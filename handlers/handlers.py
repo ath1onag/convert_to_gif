@@ -1,7 +1,7 @@
 import os
 from aiogram import Bot, Router, F
 from aiogram.filters import Command
-from database.database import insert_user
+from database.database import create_database, insert_database
 from aiogram import types
 from aiogram.types.input_file import FSInputFile
 from moviepy import *
@@ -25,7 +25,7 @@ async def start_command(message: types.Message):
     """Обработчик команды /start"""
     user_id = message.from_user.id
     username = message.from_user.username
-    await insert_user(user_id, username)
+    await insert_database(user_id, username)
     keyboard = kb.main_menu
 
     await message.answer(LEXICON_RU['/start'], reply_markup=keyboard)
