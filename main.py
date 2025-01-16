@@ -4,14 +4,14 @@ from aiogram import Bot, Dispatcher
 from aiogram.types import BotCommand
 from handlers import handlers
 from config_data.config import Config, load_config
-from database.database import create_table
+from database.database import create_database
 
 logging.basicConfig(level=logging.INFO)
 
 
 async def main():
     # Создаем таблицу, если она не существует
-    await create_table()
+    create_database()
 
     config: Config = load_config()
 
