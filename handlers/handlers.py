@@ -73,6 +73,7 @@ async def handle_video(message: types.Message, state: FSMContext):
 
         # Обрезка видео по длительности и создание GIF
         clip = VideoFileClip(video_path)
+        clip = clip.subclipped(0, 5)
         clip.write_gif(gif_path, fps=5)  # Можно увеличить fps для лучшего качества
 
         document = FSInputFile(f"{UPLOAD_PATH}{video.file_id}.gif")
